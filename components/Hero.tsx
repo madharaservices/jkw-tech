@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ChevronDown, Sparkles } from 'lucide-react';
 
-// Public folder eke hero folder ekathule thiyena images tika
 const backgroundImages = [
   '/hero/repair1.jpg',
   '/hero/repair2.jpg',
@@ -18,7 +17,6 @@ const backgroundImages = [
 export default function Hero() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Auto slide animation (Every 5 seconds)
   useEffect(() => {
     const slideInterval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
@@ -29,7 +27,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-gray-950 group">
       
-      {/* Background Image Slider with smooth crossfade & zoom */}
+      {/* Background Image Slider */}
       <AnimatePresence mode="popLayout">
         <motion.img
           key={currentImageIndex}
@@ -44,26 +42,30 @@ export default function Hero() {
         />
       </AnimatePresence>
 
-      {/* Modern Gradient Overlays to make text pop */}
+      {/* Gradient Overlays */}
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-gray-900/80 via-gray-900/50 to-gray-950/90 mix-blend-multiply" />
       <div className="absolute inset-0 z-10 bg-gradient-to-r from-blue-900/40 to-transparent" />
       
-      {/* Main Content Container */}
-      <div className="relative z-20 text-center px-4 w-full max-w-5xl mx-auto flex flex-col items-center pt-24 pb-20">
+      {/* 
+        FIX: 
+        - pt-[120px] -> Navbar eka asse yanne nathi wenna udin ida.
+        - Text sizes kalin thibba original loku size ekatama genawa! 
+      */}
+      <div className="relative z-20 text-center px-4 w-full max-w-5xl mx-auto flex flex-col items-center pt-[130px] sm:pt-32 lg:pt-24 pb-28">
         
-        {/* Animated Glassmorphism Badge */}
+        {/* Animated Badge - Original Size */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-md shadow-2xl mb-8"
         >
-          <span className="text-xs md:text-sm font-bold tracking-[0.15em] text-white uppercase">
+         <span className="text-xs md:text-sm font-bold tracking-[0.15em] text-white uppercase text-center">
             Trusted Tech Repair in Delgoda
           </span>
         </motion.div>
         
-        {/* Main Title (Wow look) */}
+        {/* Main Title - Original BIG Size (text-5xl on mobile) */}
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -71,22 +73,22 @@ export default function Hero() {
           className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[1.1] mb-8 text-white drop-shadow-2xl"
         >
           Seamless Tech, <br className="hidden sm:block" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-400">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-indigo-400 py-2">
             Uninterrupted Business.
           </span>
         </motion.h1>
 
-        {/* Subtitle */}
+        {/* Subtitle - Original Size (text-base to text-xl) */}
         <motion.p 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mb-12 font-medium leading-relaxed drop-shadow-md"
+          className="text-base sm:text-lg md:text-xl text-gray-200 max-w-2xl mx-auto mb-12 font-medium leading-relaxed drop-shadow-md px-2 sm:px-0"
         >
           Expert repair and maintenance for printers, computers, CCTV, and network systems. We minimize downtime so you can maximize productivity.
         </motion.p>
 
-        {/* Action Buttons */}
+        {/* Action Buttons - Original Large Size (text-lg) */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -104,12 +106,12 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Modern Slider Indicators (The .-.. style) */}
+      {/* Modern Slider Indicators */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-16 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2"
+        className="absolute bottom-12 sm:bottom-16 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2"
       >
         {backgroundImages.map((_, idx) => (
           <button
@@ -130,7 +132,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 1 }}
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 cursor-pointer"
+        className="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-20 cursor-pointer hidden sm:block"
         onClick={() => window.scrollBy({ top: window.innerHeight, behavior: 'smooth' })}
       >
         <motion.div
